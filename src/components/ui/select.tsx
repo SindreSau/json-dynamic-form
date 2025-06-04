@@ -35,7 +35,7 @@ const Select = ({
   );
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full bg-inherit">
       <Label inputId={id}>{label}</Label>
       <select
         id={id}
@@ -43,7 +43,7 @@ const Select = ({
         value={value}
         onChange={handleOnValueChange}
         className={cn(
-          'w-full rounded border bg-background-input px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10',
+          'w-full rounded border bg-background-input px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed',
           className
         )}
       >

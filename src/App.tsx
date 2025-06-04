@@ -1,20 +1,47 @@
+import React, { useState } from 'react';
 import MainLayout from '@layouts/main-layout';
-import DynamicForm from './components/ui/dynamic-form';
-import exampleSchema from '@schemas/example.json';
+import JsonEditor from '@components/ui/json-editor';
+import exampleSchema from '@schemas/extended-example.json';
+import type { FormSchema } from '@utils/validation/form-schema';
 
 const App = () => {
-  const schema = JSON.parse(JSON.stringify(exampleSchema));
+  const [schema, setSchema] = useState<FormSchema>(exampleSchema as FormSchema);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    console.log('Form submitted with: ', data);
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const text = e.target?.result as string;
+          const json = JSON.parse(text);
+          setSchema(json);
+        } catch (error) {
+          console.error('Error parsing JSON:', error);
+        }
+      };
+      reader.readAsText(file);
+    }
   };
 
   return (
     <MainLayout>
-      <DynamicForm schema={schema} handleSubmit={handleSubmit} />
+      <div className="text-center mb-4">
+        <label htmlFor="json-uploader" className="mr-2">
+          Upload JSON Schema:
+        </label>
+        <input
+          type="file"
+          name="json-uploader"
+          id="json-uploader"
+          accept=".json"
+          className="bg-background-input border rounded px-4 py-2"
+          onChange={handleFileUpload}
+        />
+      </div>
+
+      <h1 className="w-full text-center">JSON Dynamic Form Editor</h1>
+      <JsonEditor initialSchema={schema} />
     </MainLayout>
   );
 };

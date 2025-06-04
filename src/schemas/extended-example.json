@@ -1,0 +1,61 @@
+{
+  "title": "Finn en bedre og billigere strømavtale i ditt område",
+  "fields": [
+    {
+      "label": "Velg boligtype",
+      "name": "property_type",
+      "type": "select",
+      "options": [
+        {
+          "value": "",
+          "label": "Velg boligtype..."
+        },
+        {
+          "value": "leilighet",
+          "label": "Leilighet"
+        },
+        {
+          "value": "enebolig",
+          "label": "Enebolig"
+        },
+        {
+          "value": "rekkehus",
+          "label": "Rekkehus"
+        },
+        {
+          "value": "hytte",
+          "label": "Hytte"
+        }
+      ],
+      "required": true
+    },
+    {
+      "label": "Adresse (der du bruker strøm)",
+      "name": "address_street_name",
+      "type": "text",
+      "placeholder": "F.eks. Karl Johans gate 1",
+      "required": true
+    },
+    {
+      "label": "Navn",
+      "name": "name",
+      "type": "text",
+      "placeholder": "Ola Nordmann",
+      "required": true
+    },
+    {
+      "label": "E-post",
+      "name": "email",
+      "type": "email",
+      "placeholder": "ola@example.com",
+      "required": true
+    },
+    {
+      "label": "Telefon",
+      "name": "phone",
+      "type": "tel",
+      "placeholder": "+47 123 45 678",
+      "required": false
+    }
+  ]
+}

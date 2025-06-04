@@ -8,6 +8,7 @@ import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
 import { Select } from '@components/ui/select';
 import { useState, useMemo } from 'react';
+import { TelInput } from './tel-input';
 
 type DynamicFormProps = {
   schema?: FormSchema;
@@ -56,7 +57,7 @@ const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn('flex flex-col gap-4', className)}
+      className={cn('flex flex-col gap-4 bg-inherit', className)}
     >
       {fieldsWithIds.map((field: FieldSchema & { id: string }) => {
         switch (field.type) {
@@ -68,6 +69,17 @@ const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
                 id={field.id}
                 name={field.name}
                 type={field.type}
+                label={field.label}
+                placeholder={field.placeholder}
+                required={field.required}
+              />
+            );
+          case 'tel':
+            return (
+              <TelInput
+                key={field.id}
+                id={field.id}
+                name={field.name}
                 label={field.label}
                 placeholder={field.placeholder}
                 required={field.required}

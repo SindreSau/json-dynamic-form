@@ -9,7 +9,7 @@ type LabelProps = {
 const Label = ({ inputId, className, children }: LabelProps) => {
   return (
     <label
-      className={cn('text-sm font-semibold ', className)}
+      className={cn('text-sm font-semibold bg-inherit mb-0.5', className)}
       htmlFor={inputId}
     >
       {children}

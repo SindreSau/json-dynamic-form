@@ -1,5 +1,12 @@
 import { z } from 'zod/v4';
 
+export const currentSupportedTypes = [
+  'select',
+  'text',
+  'email',
+  'tel',
+] as const;
+
 const baseFieldSchema = {
   label: z
     .string()
@@ -29,9 +36,31 @@ const textOrEmailFieldSchema = z.object({
   placeholder: z.string().optional(),
 });
 
+// Simple interface for compatibility with existing schemas
+export interface CountryCode {
+  country: string;
+  code: string;
+}
+
+const telFieldSchema = z.object({
+  ...baseFieldSchema,
+  type: z.literal('tel'),
+  placeholder: z.string().optional(),
+  // Keep this optional for backward compatibility with existing schemas
+  countryCodes: z
+    .array(
+      z.object({
+        country: z.string(),
+        code: z.string(),
+      })
+    )
+    .optional(),
+});
+
 const fieldSchema = z.discriminatedUnion('type', [
   selectFieldSchema,
   textOrEmailFieldSchema,
+  telFieldSchema,
 ]);
 
 const formSchema = z.object({
