@@ -5,15 +5,15 @@ type MainLayoutProps = {
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="h-8 bg-primary/10"></header>
+      {/* <header className="h-8 bg-primary/10"></header> */}
 
-      <main className="flex-grow container mx-auto my-8 md:my-12 px-4">
+      <main className="flex-grow container mx-auto my-6 md:my-8 px-4">
         {children}
       </main>
 
-      <footer className="h-12 bg-primary/60">
-        <div className="container mx-auto flex items-center justify-center h-full">
-          © {new Date().getFullYear()} JSON Dynamic Form Editor
+      <footer className="bg-primary/80">
+        <div className="py-4 container mx-auto flex items-center justify-center h-full text-sm text-primary-foreground">
+          © {new Date().getFullYear()} - Built by Sindre Sauarlia
         </div>
       </footer>
     </div>

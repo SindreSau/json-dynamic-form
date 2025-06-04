@@ -2,9 +2,12 @@
 @import './theme.css';
 
 @layer base {
-  html,
+  html {
+    @apply bg-background text-foreground  font-nunito antialiased;
+  }
+
   * {
-    @apply bg-background text-foreground border-border font-nunito antialiased;
+    @apply border-border;
   }
 
   /* Custom focus styles */

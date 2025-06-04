@@ -35,7 +35,7 @@ const App = () => {
           name="json-uploader"
           id="json-uploader"
           accept=".json"
-          className="bg-background-input border rounded px-4 py-2"
+          className="bg-background-input border rounded px-4 py-2 text-sm "
           onChange={handleFileUpload}
         />
       </div>
