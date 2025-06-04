@@ -5,11 +5,14 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
       "@styles/*": ["./src/styles/*"]
     }
-  }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
