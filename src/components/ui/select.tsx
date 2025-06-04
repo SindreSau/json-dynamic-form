@@ -11,6 +11,8 @@ interface SelectProps {
   className?: string;
   id: string;
   name?: string;
+  placeholder?: string;
+  required?: boolean;
 }
 
 const Select = ({
@@ -21,6 +23,8 @@ const Select = ({
   className,
   id,
   name,
+  placeholder,
+  required,
 }: SelectProps) => {
   const handleOnValueChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -28,6 +32,7 @@ const Select = ({
       const selectedOption = options.find(
         (option) => option.value === selectedValue
       );
+
       if (!selectedOption) return;
       onValueChange(selectedValue, selectedOption);
     },
@@ -42,11 +47,17 @@ const Select = ({
         name={name}
         value={value}
         onChange={handleOnValueChange}
+        required={required}
         className={cn(
           'w-full rounded border bg-background-input px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed',
           className
         )}
       >
+        {placeholder && (
+          <option value="" disabled>
+            {placeholder}
+          </option>
+        )}
         {options.map((option) => (
           <option
             key={option.value}

@@ -95,6 +95,8 @@ const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
                 options={field.options}
                 value={selectValues[field.name] || ''}
                 onValueChange={(value) => handleSelectChange(field.name, value)}
+                placeholder={field.placeholder}
+                required={field.required}
               />
             );
           default:
@@ -103,8 +105,12 @@ const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
       })}
 
       <Button type="submit" variant={'accent'}>
-        Submit
+        Send inn skjema
       </Button>
+
+      <i className="text-muted text-xs text-center">
+        Skjemaets output vil vises i konsollen
+      </i>
     </form>
   );
 };

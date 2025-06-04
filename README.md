@@ -56,3 +56,9 @@
     - En "adresse"-komponent som inneholder både gateadresse, postnummer og by.
     - En "kontaktinfo"-komponent som inneholder både e-post og telefonnummer.
     - En mer avansert telefon-nummer komponent, som tar hensyn til landskoder og validerer at nummeret er gyldig for det valgte landet.
+
+Hva jeg gjerne skulle brukt mer tid på:
+
+- Bedre feilmeldinger i for JSON-validering
+- Bedre håndtering av validering i selve skjemaet, inkludert konfigurering av disse fra JSON-strukturen
+- Implementert et drag and drop-grensesnitt for å bygge skjemaet i stedenfor å skrive/redigere JSON direkte
