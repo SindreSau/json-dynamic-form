@@ -17,11 +17,11 @@ const JsonEditor = ({ initialSchema, className }: JsonEditorProps) => {
   const [jsonText, setJsonText] = useState<string>('');
   const [parsedSchema, setParsedSchema] = useState<FormSchema | null>(null);
   const [jsonError, setJsonError] = useState<string | null>(null);
+  const [debouncedText, setDebouncedText] = useState<string>('');
   const [schemaValidation, setSchemaValidation] = useState<{
     valid: boolean;
     errors: ($ZodIssue[] | { message: string }[]) | null;
   }>({ valid: true, errors: null });
-  const [debouncedText, setDebouncedText] = useState<string>('');
 
   useEffect(() => {
     const prettyJson = JSON.stringify(initialSchema, null, 2);

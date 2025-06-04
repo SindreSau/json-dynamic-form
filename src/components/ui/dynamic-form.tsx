@@ -7,7 +7,7 @@ import {
 import { Button } from '@components/ui/button';
 import { Input } from '@components/ui/input';
 import { Select } from '@components/ui/select';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { TelInput } from './tel-input';
 
 type DynamicFormProps = {
@@ -18,6 +18,24 @@ type DynamicFormProps = {
 
 const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
   const [selectValues, setSelectValues] = useState<Record<string, string>>({});
+
+  // Just for fun and demo of button variants
+  const [buttonVariant, setButtonVariant] = useState<
+    'primary' | 'secondary' | 'accent'
+  >('primary');
+  useEffect(() => {
+    const variants: ('primary' | 'secondary' | 'accent')[] = [
+      'primary',
+      'secondary',
+      'accent',
+    ];
+    let index = 0;
+    const interval = setInterval(() => {
+      index = (index + 1) % variants.length;
+      setButtonVariant(variants[index]);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
 
   const fieldsWithIds = useMemo(() => {
     if (!schema?.fields) return [];
@@ -102,7 +120,9 @@ const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
         }
       })}
 
-      <Button type="submit">Submit</Button>
+      <Button type="submit" variant={buttonVariant}>
+        Submit
+      </Button>
     </form>
   );
 };
