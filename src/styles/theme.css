@@ -20,6 +20,14 @@
 
   --color-ring: #44d0ff;
 
+  /* Semantic colors */
+  --color-success: #00a651;
+  --color-success-foreground: #ffffff;
+  --color-warning: #ffb300;
+  --color-warning-foreground: #ffffff;
+  --color-destructive: #ff3b30;
+  --color-destructive-foreground: #ffffff;
+
   /* Fonts */
   --font-montserrat: 'Montserrat Variable', sans-serif;
   --font-nunito: 'Nunito Variable', sans-serif;

@@ -6,14 +6,11 @@ import { useState } from 'react';
 import { Select } from './components/ui/select';
 
 const App = () => {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    if (value) {
-      formData.set('property_type', value);
-    }
     const data = Object.fromEntries(formData.entries());
     console.log('Form submitted with: ', data);
   };
@@ -22,15 +19,15 @@ const App = () => {
     <MainLayout>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <Select
-          label="Select Property Type"
-          items={[
-            { label: 'House', value: 'house' },
-            { label: 'Apartment', value: 'apartment' },
-            { label: 'Condo', value: 'condo' },
+          label="Velg boligtype"
+          options={[
+            { label: 'Velg boligtype...', value: '' },
+            { label: 'Leilighet', value: 'leilighet' },
+            { label: 'Enebolig', value: 'enebolig' },
+            { label: 'Rekkehus', value: 'rekkehus' },
+            { label: 'Hytte', value: 'hytte' },
           ]}
-          labelExtractor={(item) => item.label}
-          valueExtractor={(item) => item.value}
-          value={value || ''}
+          value={value}
           id="property_type"
           name="property_type"
           onValueChange={(newValue, selectedItem) => {
@@ -41,16 +38,24 @@ const App = () => {
 
         <Input
           type="text"
-          placeholder="Write your name here"
-          label="Name"
+          placeholder="F.eks. Karl Johans gate 1"
+          label="Adresse (der du bruker strøm)"
+          name="address_street_name"
+          id="address_street_name"
+        />
+
+        <Input
+          type="text"
+          placeholder="Ola Nordmann"
+          label="Navn"
           name="name"
           id="name"
         />
 
         <Input
           type="email"
-          placeholder="Write your email here"
-          label="Email"
+          placeholder="ola@example.com"
+          label="E-post"
           name="email"
           id="email"
         />

@@ -1,43 +1,37 @@
 import React, { useCallback } from 'react';
 import { cn } from '@/utils/cn';
 import Label from '@components/ui/label';
+import type { SelectOption } from '@/utils/validation/form-schema';
 
-interface Props<DataType> {
+interface SelectProps {
   label: string;
-  items: Array<DataType>;
+  options: SelectOption[];
   value: string;
-  labelExtractor: (item: DataType) => string;
-  valueExtractor: (item: DataType) => string;
-  onValueChange: (value: string, selectedItem: DataType) => void;
+  onValueChange: (value: string, selectedOption: SelectOption) => void;
   className?: string;
-  id?: string;
+  id: string;
   name?: string;
 }
 
-const Select = <DataType,>({
+const Select = ({
   label,
-  items,
+  options,
   value,
   onValueChange,
-  labelExtractor,
-  valueExtractor,
   className,
-  id = `select-${Math.random().toString(36).substring(2, 9)}`,
+  id,
   name,
-}: Props<DataType>) => {
+}: SelectProps) => {
   const handleOnValueChange = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const {
-        target: { value: selectedValue },
-      } = event;
-
-      const item = items.find((i) => valueExtractor(i) === selectedValue);
-
-      if (!item) return;
-
-      onValueChange(selectedValue, item);
+      const selectedValue = event.target.value;
+      const selectedOption = options.find(
+        (option) => option.value === selectedValue
+      );
+      if (!selectedOption) return;
+      onValueChange(selectedValue, selectedOption);
     },
-    [items, onValueChange, valueExtractor]
+    [options, onValueChange]
   );
 
   return (
@@ -49,19 +43,19 @@ const Select = <DataType,>({
         value={value}
         onChange={handleOnValueChange}
         className={cn(
-          'w-full rounded border border-border bg-background-input px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10',
+          'w-full rounded border bg-background-input px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed relative z-10',
           className
         )}
       >
-        {items.map((item, index) => {
-          const itemLabel = labelExtractor(item);
-          const itemValue = valueExtractor(item);
-          return (
-            <option key={index} value={itemValue} className="capitalize">
-              {itemLabel}
-            </option>
-          );
-        })}
+        {options.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+            disabled={option.value === ''}
+          >
+            {option.label}
+          </option>
+        ))}
       </select>
     </div>
   );
