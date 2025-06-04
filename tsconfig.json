@@ -11,7 +11,10 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@schemas/*": ["./src/schemas/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

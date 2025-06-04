@@ -3,7 +3,36 @@
 
 @layer base {
   html {
-    @apply bg-background text-foreground border-border;
+    @apply bg-background text-foreground border-border font-nunito;
+  }
+
+  /* Custom focus styles */
+  button,
+  a[href],
+  input,
+  textarea,
+  select,
+  [role='button'],
+  [tabindex]:not([tabindex='-1']) {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold font-montserrat capitalize;
+  }
+
+  h1 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-lg md:text-xl lg:text-2xl;
   }
 
   a {

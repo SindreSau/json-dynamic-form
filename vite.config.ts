@@ -12,6 +12,9 @@ export default defineConfig({
       '@components': '/src/components',
       '@layouts': '/src/layouts',
       '@styles': '/src/styles',
+      '@utils': '/src/utils',
+      '@hooks': '/src/hooks',
+      '@schemas': '/src/schemas',
     },
   },
 });

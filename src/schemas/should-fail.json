@@ -1,0 +1,30 @@
+{
+  "title": "Finn en bedre og billigere strømavtale i ditt område",
+  "fields": [
+    {
+      "label": "Velg boligtype",
+      "name": "property_type",
+      "type": "select"
+    },
+    {
+      "label": "",
+      "name": "address_street_name",
+      "type": "text",
+      "placeholder": "F.eks. Karl Johans gate 1",
+      "required": true
+    },
+    {
+      "label": "Navn",
+      "type": "tex",
+      "placeholder": "Ola Nordmann",
+      "required": true
+    },
+    {
+      "label": "E-post",
+      "name": "email",
+      "type": "email",
+      "placeholder": "ola@example.com",
+      "required": true
+    }
+  ]
+}
