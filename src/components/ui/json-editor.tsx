@@ -24,6 +24,13 @@ const JsonEditor = ({ initialSchema, className }: JsonEditorProps) => {
   const [debouncedText, setDebouncedText] = useState<string>('');
 
   useEffect(() => {
+    const prettyJson = JSON.stringify(initialSchema, null, 2);
+    setJsonText(prettyJson);
+    setDebouncedText(prettyJson);
+    setParsedSchema(initialSchema);
+  }, [initialSchema]);
+
+  useEffect(() => {
     try {
       const parsed = JSON.parse(debouncedText);
       setParsedSchema(parsed);
@@ -44,13 +51,6 @@ const JsonEditor = ({ initialSchema, className }: JsonEditorProps) => {
     }, 200);
     return () => clearTimeout(timer);
   }, [jsonText]);
-
-  useEffect(() => {
-    const prettyJson = JSON.stringify(initialSchema, null, 2);
-    setJsonText(prettyJson);
-    setDebouncedText(prettyJson);
-    setParsedSchema(initialSchema);
-  }, [initialSchema]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
