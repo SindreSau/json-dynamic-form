@@ -1,3 +1,4 @@
+import cn from '@/utils/cn';
 import {
   validateFormSchema,
   type FieldSchema,
@@ -10,24 +11,19 @@ import { useState, useMemo } from 'react';
 
 type DynamicFormProps = {
   schema?: FormSchema;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+  className?: string;
 };
 
-const DynamicForm = ({ schema }: DynamicFormProps) => {
+const DynamicForm = ({ schema, className, handleSubmit }: DynamicFormProps) => {
   const [selectValues, setSelectValues] = useState<Record<string, string>>({});
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    console.log('Form submitted with: ', data);
-  };
 
   const fieldsWithIds = useMemo(() => {
     if (!schema?.fields) return [];
 
-    return schema.fields.map((field, index) => ({
+    return schema.fields.map((field) => ({
       ...field,
-      id: `field-${field.name}-${index}`,
+      id: `field-${field.name}-${crypto.randomUUID().substring(0, 13)}`,
     }));
   }, [schema?.fields]);
 
@@ -58,37 +54,36 @@ const DynamicForm = ({ schema }: DynamicFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className={cn('flex flex-col gap-4', className)}
+    >
       {fieldsWithIds.map((field: FieldSchema & { id: string }) => {
         switch (field.type) {
           case 'text':
           case 'email':
             return (
-              <div key={field.id} className="mb-4">
-                <Input
-                  id={field.id}
-                  name={field.name}
-                  type={field.type}
-                  label={field.label}
-                  placeholder={field.placeholder}
-                  required={field.required}
-                />
-              </div>
+              <Input
+                key={field.id}
+                id={field.id}
+                name={field.name}
+                type={field.type}
+                label={field.label}
+                placeholder={field.placeholder}
+                required={field.required}
+              />
             );
           case 'select':
             return (
-              <div key={field.id} className="mb-4">
-                <Select
-                  id={field.id}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  value={selectValues[field.name] || ''}
-                  onValueChange={(value) =>
-                    handleSelectChange(field.name, value)
-                  }
-                />
-              </div>
+              <Select
+                key={field.id}
+                id={field.id}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                value={selectValues[field.name] || ''}
+                onValueChange={(value) => handleSelectChange(field.name, value)}
+              />
             );
           default:
             return null;
