@@ -12,10 +12,11 @@
 
   --color-background: #fbfcfd;
   --color-foreground: #1e1f20;
-  --color-background-muted: #dae0e4;
+  --color-background-muted: #e7ecef;
+  --color-background-input: #f1f4f6;
   --color-card: #c0c5c8;
   --color-muted: #3a3d3f;
-  --color-border: #95989d;
+  --color-border: #abaeb3;
 
   --color-ring: #44d0ff;
 
@@ -24,7 +25,6 @@
   --font-nunito: 'Nunito Variable', sans-serif;
 }
 
-/* montserrat-latin-wght-normal */
 @font-face {
   font-family: 'Montserrat Variable';
   font-style: normal;
@@ -38,7 +38,6 @@
     U+2215, U+FEFF, U+FFFD;
 }
 
-/* nunito-latin-wght-normal */
 @font-face {
   font-family: 'Nunito Variable';
   font-style: normal;

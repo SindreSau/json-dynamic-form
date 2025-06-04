@@ -2,8 +2,9 @@
 @import './theme.css';
 
 @layer base {
-  html {
-    @apply bg-background text-foreground border-border font-nunito;
+  html,
+  * {
+    @apply bg-background text-foreground border-border font-nunito antialiased;
   }
 
   /* Custom focus styles */
@@ -20,7 +21,7 @@
   h1,
   h2,
   h3 {
-    @apply font-semibold font-montserrat capitalize;
+    @apply font-semibold font-montserrat capitalize tracking-wide;
   }
 
   h1 {
