@@ -84,10 +84,12 @@ const JsonEditor = ({ initialSchema, className }: JsonEditorProps) => {
           <h2 className="mb-2 text-center">JSON Schema Editor</h2>
           <div className=" p-2 rounded mb-2">
             <textarea
-              className="font-mono text-sm w-full min-h-[max(400px,60vh)] p-2 bg-background-input rounded border"
+              className="font-mono text-sm w-full min-h-[max(400px,70vh)] p-2 bg-background-input rounded border"
               value={jsonText}
               onChange={handleTextChange}
               spellCheck={false}
+              area-label="JSON Schema Editor"
+              placeholder="Paste or edit your JSON schema here..."
             />
           </div>
           {jsonError && (

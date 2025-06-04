@@ -16,6 +16,5 @@
       "@hooks/*": ["./src/hooks/*"],
       "@schemas/*": ["./src/schemas/*"]
     }
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  }
 }
