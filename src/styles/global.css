@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import './theme.css';
+
+@layer base {
+  html {
+    @apply bg-background text-foreground border-border;
+  }
+
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors underline underline-offset-2;
+  }
+}

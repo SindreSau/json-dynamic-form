@@ -1,0 +1,17 @@
+@theme {
+  /* General */
+  --border-radius: 0.5rem;
+
+  /* Colors */
+  --color-primary: #133b6b;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #02b5ff;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #ff5e22;
+  --color-accent-foreground: #ffffff;
+
+  --color-background: #fbfcfd;
+  --color-foreground: #1e1f20;
+  --color-muted: #3a3d3f;
+  --color-border: #363a41;
+}
