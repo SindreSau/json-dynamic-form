@@ -7,10 +7,6 @@
       "type": "select",
       "options": [
         {
-          "value": "",
-          "label": "Velg boligtype..."
-        },
-        {
           "value": "leilighet",
           "label": "Leilighet"
         },
@@ -27,6 +23,7 @@
           "label": "Hytte"
         }
       ],
+      "placeholder": "Velg boligtype",
       "required": true
     },
     {

@@ -12,8 +12,14 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       </main>
 
       <footer className="bg-primary/80">
-        <div className="py-4 container mx-auto flex items-center justify-center h-full text-sm text-primary-foreground">
-          © {new Date().getFullYear()} - Built by Sindre Sauarlia
+        <div className="py-4 container mx-auto flex items-center justify-center h-full text-sm ">
+          <a
+            href="https://www.sindresau.me"
+            className="text-primary-foreground"
+            target="_blank"
+          >
+            © {new Date().getFullYear()} - Built by Sindre Sauarlia
+          </a>
         </div>
       </footer>
     </div>

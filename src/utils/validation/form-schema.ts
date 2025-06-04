@@ -28,6 +28,7 @@ const selectFieldSchema = z.object({
   ...baseFieldSchema,
   type: z.literal('select'),
   options: z.array(optionSchema),
+  placeholder: z.string(),
 });
 
 const textOrEmailFieldSchema = z.object({
@@ -36,17 +37,10 @@ const textOrEmailFieldSchema = z.object({
   placeholder: z.string().optional(),
 });
 
-// Simple interface for compatibility with existing schemas
-export interface CountryCode {
-  country: string;
-  code: string;
-}
-
 const telFieldSchema = z.object({
   ...baseFieldSchema,
   type: z.literal('tel'),
   placeholder: z.string().optional(),
-  // Keep this optional for backward compatibility with existing schemas
   countryCodes: z
     .array(
       z.object({
