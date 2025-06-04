@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <MainLayout>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <Select
           label="Select Property Type"
           items={[
@@ -55,17 +55,7 @@ const App = () => {
           id="email"
         />
 
-        <div className="flex gap-2 mt-4">
-          <Button type="submit">Click me</Button>
-
-          <Button variant="secondary" size="lg">
-            Click me
-          </Button>
-
-          <Button variant="accent" size="sm">
-            Click me
-          </Button>
-        </div>
+        <Button type="submit">Submit</Button>
       </form>
     </MainLayout>
   );
